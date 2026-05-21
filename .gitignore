@@ -1,0 +1,13 @@
+__pycache__/
+.pytest_cache/
+.venv/
+.agent-config/
+.my-agent-config/
+.agents/
+.claude/
+.pi/
+.cursor/
+.opencode/
+.cline/
+.clinerules/
+.codex/
