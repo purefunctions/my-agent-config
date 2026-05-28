@@ -1,6 +1,6 @@
 ---
 name: do-grill-with-docs
-description: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (UBIQUITOUS-LANGUAGE.md, ADRs) inline as decisions crystallise. Use when user wants to stress-test a plan against their project's language and documented decisions.
+description: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when user wants to stress-test a plan against their project's language and documented decisions.
 ---
 
 <what-to-do>
@@ -21,11 +21,11 @@ During codebase exploration, also look for existing documentation:
 
 ### File structure
 
-Most repos have a single bounded context (and hence one UBIQUITOUS-LANGUAGE.md file):
+Most repos have a single context:
 
 ```
 /
-├── UBIQUITOUS-LANGUAGE.md
+├── CONTEXT.md
 ├── docs/
 │   └── adr/
 │       ├── 0001-event-sourced-orders.md
@@ -33,7 +33,7 @@ Most repos have a single bounded context (and hence one UBIQUITOUS-LANGUAGE.md f
 └── src/
 ```
 
-If a `CONTEXT-MAP.md` exists at the root, the repo has multiple bounded contexts. The map points to where each one lives:
+If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The map points to where each one lives:
 
 ```
 /
@@ -42,20 +42,20 @@ If a `CONTEXT-MAP.md` exists at the root, the repo has multiple bounded contexts
 │   └── adr/                          ← system-wide decisions
 ├── src/
 │   ├── ordering/
-│   │   ├── UBIQUITOUS-LANGUAGE.md
+│   │   ├── CONTEXT.md
 │   │   └── docs/adr/                 ← context-specific decisions
 │   └── billing/
-│       ├── UBIQUITOUS-LANGUAGE.md
+│       ├── CONTEXT.md
 │       └── docs/adr/
 ```
 
-Create files lazily — only when you have something to write. If no `UBIQUITOUS-LANGUAGE.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
 
 ## During the session
 
 ### Challenge against the glossary
 
-When the user uses a term that conflicts with the existing language in `UBIQUITOUS-LANGUAGE.md`, call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
+When the user uses a term that conflicts with the existing language in `CONTEXT.md`, call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
 
 ### Sharpen fuzzy language
 
@@ -69,11 +69,11 @@ When domain relationships are being discussed, stress-test them with specific sc
 
 When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation is possible — which is right?"
 
-### Update UBIQUITOUS-LANGUAGE.md inline
+### Update CONTEXT.md inline
 
-When a term is resolved, update `UBIQUITOUS-LANGUAGE.md` right there. Don't batch these up — capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
+When a term is resolved, update `CONTEXT.md` right there. Don't batch these up — capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
 
-`UBIQUITOUS-LANGUAGE.md` should be totally devoid of implementation details. Do not treat `UBIQUITOUS-LANGUAGE.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
+`CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
 
 ### Offer ADRs sparingly
 
